@@ -20,3 +20,6 @@ def ver_producto(request):
 def Inicio(request):
     
     return render(request, 'mercaderia/inicio.html')
+
+def sobre_mi(request):
+    return render(request, 'mercaderia/sobre_mi.html')
