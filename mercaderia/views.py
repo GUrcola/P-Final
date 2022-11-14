@@ -1,14 +1,23 @@
 from django.http import HttpResponse
 from django.template import Context, Template, loader
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from mercaderia.models import producto
+from mercaderia.forms import FormularioProd
 
-def crear_producto(request, tipo, modelo):
+def crear_producto(request):
     
-    Producto= producto(tipo= tipo ,modelo= modelo)
-    Producto.save()
+    if request.method == 'POST':
+        formulario = FormularioProd(request.POST)
+        if formulario.is_valid():   
+            tipo=request.POST['tipo']
+            modelo=request.POST ['modelo']
+            Producto= producto(tipo= tipo ,modelo= modelo)
+            Producto.save()
+            return redirect ('ver_productos')
     
-    return render(request, 'mercaderia/crear_producto.html', {"Producto": Producto})
+    formulario=FormularioProd()
+    
+    return render(request, 'mercaderia/crear_producto.html', {'formulario':formulario})
 
 
 def ver_producto(request):
