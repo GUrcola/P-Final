@@ -1,8 +1,18 @@
 {% extends 'mercaderia/base.html' %}
 {% block Personal %}
 <p>Listado de Productos</p>
+
+<form action={% url 'ver_productos' %} method="GET">
+    <table> 
+        {{formulario}}
+    </table>
+   
+    <input type="submit" value="Buscar">
+</form>
+<p>
  {% for producto in productos %}
  <li> {{producto.tipo}} {{producto.modelo}} </li>
+</p>
  {% endfor %}
         
 {% endblock Personal %}

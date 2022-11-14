@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import Context, Template, loader
 from django.shortcuts import render, redirect
 from mercaderia.models import producto
-from mercaderia.forms import FormularioProd
+from mercaderia.forms import FormularioProd, FormularioBusqueda
 
 def crear_producto(request):
     
@@ -22,9 +22,16 @@ def crear_producto(request):
 
 def ver_producto(request):
     
-    productos=producto.objects.all()
+    tipo=request.GET.get('tipo', None)
+    
+    if tipo:
+        productos = producto.objects.filter(tipo__icontains=tipo)
+    else:
+        productos=producto.objects.all()
+    
+    formulario= FormularioBusqueda()
        
-    return render(request, 'mercaderia/ver_producto.html',{"productos": productos})
+    return render(request, 'mercaderia/ver_producto.html',{"productos": productos, 'formulario':formulario})
 
 def Inicio(request):
     
