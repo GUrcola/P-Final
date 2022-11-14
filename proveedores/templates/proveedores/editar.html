@@ -1,0 +1,17 @@
+{% extends 'mercaderia/base.html' %}
+{% block Personal %}
+<form action={% url 'editar' %} method="POST">
+    {% csrf_token %}
+    <table> 
+        {{formulario}}
+    </table>
+   
+    <input type="submit" value="Editar">
+</form>
+        
+{% endblock Personal %}
+
+{% block titulo %}
+<title>Editar</title>
+{% endblock titulo %}
+    

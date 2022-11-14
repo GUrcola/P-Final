@@ -1,0 +1,27 @@
+{% extends 'mercaderia/base.html' %}
+{% block Personal %}
+<p>Listado de Proveedores</p>
+
+<form action={% url 'ver_proveedor' %} method="GET">
+    <table> 
+        {{formulario}}
+    </table>
+   
+    
+</form>
+<p>
+ {% for proveedores in Mis_Proveedores %}
+ <li> {{proveedores.razon_social}} {{proveedores.ubicacion}}
+    <button>
+        <a class="navbar-brand" href={% url 'editar' proveedores.id %}>Editar</a> 
+    </button>  
+ </li>
+</p>
+ {% endfor %}
+        
+{% endblock Personal %}
+
+{% block titulo %}
+<title>Ver</title>
+{% endblock titulo %}
+    
