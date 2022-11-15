@@ -2,7 +2,7 @@ from django.shortcuts import render
 from proveedores.models import proveedores
 from proveedores.forms import ProveedorFormulario, BuscadorP
 from django.shortcuts import render, redirect
-
+from django.views.generic.edit import UpdateView
 def nuevo_proveedor(request):
     if request.method == 'POST':
         formulario = ProveedorFormulario(request.POST)
@@ -23,21 +23,35 @@ def ver_proveedor(request):
     Mis_Proveedores=proveedores.objects.all()
     return render (request,'proveedores/ver_proveedores.html',{'Mis_Proveedores':Mis_Proveedores} )
 
-def editar(request, id):
+def eliminar(request, id):
+    proveedor= proveedores.objects.get(id=id)
+    proveedor.delete()
+    return redirect('ver_proveedor')
+
+class editar(UpdateView):
+    model= proveedores
+    success_url= 'proveedores/ver/'
+    fields=['razon_social', 'ubicacion']
+    template_name= 'proveedores/editar.html'
     
-    proveedor=proveedores.objects.get(id=id)
-    if request.method == 'POST':
-        formulario = ProveedorFormulario(request.POST)
-        if formulario.is_valid():
-            datos=formulario.cleaned_data
+    
+    
+# def editar(request, id):
+    
+#     proveedor=proveedores.objects.get(id=id)
+   
+#     if request.method == 'POST':
+#         formulario = ProveedorFormulario(request.POST)
+#         if formulario.is_valid():
+#             datos=formulario.cleaned_data
             
-            proveedor.razon_social=datos('razon_social')
-            proveedor.ubicacion=datos('ubicacion')
-            proveedor.save()
+#             proveedor.razon_social=datos('razon_social')
+#             proveedor.ubicacion=datos('ubicacion')
+#             proveedor.save()
             
-            return redirect ('ver_proveedor')
+#             return redirect ('ver_proveedor')
     
    
-    formulario=ProveedorFormulario(initial='razon_social':proveedor.razon_social, 'ubicacion':proveedor.ubicacion)
+#     formulario=ProveedorFormulario(initial={'razon_social':proveedor.razon_social, 'ubicacion':proveedor.ubicacion})
     
-    return render(request,'proveedores/nuevo_proveedor.html',{'formulario':formulario} )
+#     return render(request,'proveedores/editar.html',{'formulario':formulario},{'proveedor':proveedor} )

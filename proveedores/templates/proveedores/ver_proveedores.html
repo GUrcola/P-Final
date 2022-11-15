@@ -13,7 +13,8 @@
  {% for proveedores in Mis_Proveedores %}
  <li> {{proveedores.razon_social}} {{proveedores.ubicacion}}
     <button>
-        <a class="navbar-brand" href={% url 'editar' proveedores.id %}>Editar</a> 
+        <a class="navbar-brand" href={% url 'eliminar' proveedores.id %}>Eliminar</a> 
+        <a class="navbar-brand" href={% url 'editarP' proveedores.id %}>Editar</a> 
     </button>  
  </li>
 </p>
