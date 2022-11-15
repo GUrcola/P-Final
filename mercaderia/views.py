@@ -39,3 +39,8 @@ def Inicio(request):
 
 def sobre_mi(request):
     return render(request, 'mercaderia/sobre_mi.html')
+
+def eliminarM(request, id):
+    mercaderia= producto.objects.get(id=id)
+    mercaderia.delete()
+    return redirect('ver_productos')
