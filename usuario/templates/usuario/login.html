@@ -1,0 +1,17 @@
+{% extends 'mercaderia/base.html' %}
+
+{% block titulo %}
+<title>Login</title>
+{% endblock titulo %}
+
+{% block Personal %}
+<form action={% url 'login' %} method="POST">
+    {% csrf_token %}
+    <table> 
+        {{formulario}}
+    </table>
+   
+    <input type="submit" value="Login">
+</form>
+
+{% endblock Personal %}
