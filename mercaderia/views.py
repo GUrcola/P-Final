@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from mercaderia.models import producto
 from mercaderia.forms import FormularioProd, FormularioBusqueda
 
+
+
 def crear_producto(request):
     
     if request.method == 'POST':
@@ -39,6 +41,7 @@ def Inicio(request):
 
 def sobre_mi(request):
     return render(request, 'mercaderia/sobre_mi.html')
+
 
 def eliminarM(request, id):
     mercaderia= producto.objects.get(id=id)

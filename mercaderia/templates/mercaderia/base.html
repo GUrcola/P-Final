@@ -23,18 +23,19 @@
          <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href={% url 'Inicio' %}>Inicio</a>
+
+                <a class="navbar-brand" href={% url 'sobre_mi' %}>Sobre Mi</a>
+                {% if request.user.is_authenticated %}
                 <a class="navbar-brand" href={% url 'crear_producto' %}>Nuevo Producto</a>
                 <a class="navbar-brand" href={% url 'ver_productos' %}>Ver Productos</a>
                 <a class="navbar-brand" href={% url 'nuevo_proveedor' %}>Nuevo Proveedor</a>
                 <a class="navbar-brand" href={% url 'ver_proveedor' %}>Ver Proveedor</a>
-                <a class="navbar-brand" href={% url 'sobre_mi' %}>Sobre Mi</a>
-                {% if request.user.is_authenticated %}
                 <a class="btn btn-primary" href={% url 'logout' %}>Cerrar Sesión</a>
                 <a class="btn btn-scale" href='#'>{{request.user.username}}</a>
                 {% else %}
                 <a class="btn btn-primary" href={% url 'login' %}>Iniciar Sesión</a>
-                {% comment %} <a class="btn btn-primary" href={% url 'crear' %}>Crear Usuario</a> {% endcomment %}
-                {% endif %}
+                <a class="btn btn-primary" href={% url 'registar' %}>Crear Usuario</a>
+                {% endif %} 
                 
             </div>
         </nav>
