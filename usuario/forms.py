@@ -5,3 +5,6 @@ class EditarPerfil(forms.Form):
     first_name=forms.CharField()
     last_name=forms.CharField()
     
+class EditarContraseña(forms.Form):
+    password=forms.CharField()
+    

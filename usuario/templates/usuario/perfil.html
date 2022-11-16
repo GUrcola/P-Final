@@ -11,9 +11,14 @@
 <li>Nombre: {{request.user.first_name}}</li>
 <li>Apellido: {{request.user.last_name}}</li>
 <li>Email: {{request.user.email}}</li>
-
+<p>
+    ______________________________________________________________
+</p>
 <p>
     <a href={% url 'editar_perfil' %}>Editar Datos</a>
+</p>
+<p>
+    <a href={% url 'editar_contraseña' %}>Editar Contraseña</a>
 </p>
 
 {% endblock Personal %}

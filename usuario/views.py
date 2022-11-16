@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
 from django.contrib.auth import login as Inicio_Sesion
-from django.contrib.auth.decorators import login_required
-from usuario.forms import EditarPerfil
+from django.contrib.auth.mixins import LoginRequiredMixin
+from usuario.forms import EditarPerfil, EditarContraseña
+from django.contrib.auth.views import PasswordChangeView
 def login(request):
     
     if request.method == 'POST':
@@ -51,3 +52,9 @@ def editar_perfil(request):
     else: 
         formulario=EditarPerfil(initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
     return render(request, 'usuario/edit_p.html', {'formulario':formulario})
+
+
+class CambiarMiContraseña(LoginRequiredMixin,PasswordChangeView):
+    template_name='usuario/edit_c.html'
+    success_url= '/usuario/perfil'
+    
