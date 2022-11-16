@@ -7,6 +7,17 @@
 {% block Personal %}
 <h1>
     Informacion del Usuario
+<p>
+    <li>
+        {% if  request.user.usuarioext.avatar%}
+        <img src={{request.user.usuarioext.avatar.url}} alt="">
+        {% else %}
+        Imagen no cargada
+        {% endif %}
+        
+    </li>
+
+</p>
 </h1>
 <li>Nombre: {{request.user.first_name}}</li>
 <li>Apellido: {{request.user.last_name}}</li>

@@ -4,13 +4,15 @@ from django.contrib.auth import login as Inicio_Sesion
 from django.contrib.auth.mixins import LoginRequiredMixin
 from usuario.forms import EditarPerfil, EditarContraseña
 from django.contrib.auth.views import PasswordChangeView
+from usuario.models import UsuarioExt
 def login(request):
     
     if request.method == 'POST':
         formulario=AuthenticationForm(request, data=request.POST)
         if formulario.is_valid():
-            usuario=formulario.get_user()
-            Inicio_Sesion(request, usuario)  
+            usuario=formulario.get_user() 
+            Inicio_Sesion(request, usuario)
+            extencion, nuevo=UsuarioExt.objects.get_or_create(user=request.user)  
             return redirect ('Inicio') 
     else:
         formulario=AuthenticationForm()
@@ -32,12 +34,15 @@ def crear(request):
 
 def perfil(request):
     
+  
+    
     return render(request, 'usuario/perfil.html', {})
 
 
 def editar_perfil(request):
     
     user= request.user
+    user.usuarioext
         
     if request.method == 'POST':
         formulario=EditarPerfil(request.POST)
