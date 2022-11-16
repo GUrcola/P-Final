@@ -31,7 +31,7 @@
                 <a class="navbar-brand" href={% url 'nuevo_proveedor' %}>Nuevo Proveedor</a>
                 <a class="navbar-brand" href={% url 'ver_proveedor' %}>Ver Proveedor</a>
                 <a class="btn btn-primary" href={% url 'logout' %}>Cerrar Sesión</a>
-                <a class="btn btn-scale" href='#'>{{request.user.username}}</a>
+                <a class="btn btn-scale" href={% url 'perfil' %}>{{request.user.username}}</a>
                 {% else %}
                 <a class="btn btn-primary" href={% url 'login' %}>Iniciar Sesión</a>
                 <a class="btn btn-primary" href={% url 'registar' %}>Crear Usuario</a>

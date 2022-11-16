@@ -1,0 +1,19 @@
+{% extends 'mercaderia/base.html' %}
+
+{% block titulo %}
+<title>Informacion Perfil</title>
+{% endblock titulo %}
+
+{% block Personal %}
+<h1>
+    Informacion del Usuario
+</h1>
+<li>Nombre: {{request.user.first_name}}</li>
+<li>Apellido: {{request.user.last_name}}</li>
+<li>Email: {{request.user.email}}</li>
+
+<p>
+    <a href={% url 'editar_perfil' %}>Editar Datos</a>
+</p>
+
+{% endblock Personal %}
