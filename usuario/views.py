@@ -34,7 +34,7 @@ def crear(request):
 
 def perfil(request):
     
-  
+    extencion, nuevo=UsuarioExt.objects.get_or_create(user=request.user) 
     
     return render(request, 'usuario/perfil.html', {})
 
