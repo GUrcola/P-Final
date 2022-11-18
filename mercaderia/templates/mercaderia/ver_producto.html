@@ -11,12 +11,18 @@
 </form>
 <p>
  {% for producto in productos %}
- <li> {{producto.tipo}} {{producto.modelo}} 
-    <button>
-        <a class="navbar-brand" href={% url 'eliminarM' producto.id %}>Eliminar</a> 
-    </button>  
 
- </li>
+    <li> {{producto.tipo}}  
+            <button>
+            <a class="brand" href={% url 'eliminarM' producto.id %}>Eliminar</a> 
+            <a class="brand" href={% url 'ver_producto' producto.id %}>Detalle</a> 
+        
+            </button>  
+            </button>  
+            </button>  
+
+    </li>
+    
 </p>
  {% endfor %}
         
