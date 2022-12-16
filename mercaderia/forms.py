@@ -6,3 +6,5 @@ class FormularioProd(forms.Form):
     
 class FormularioBusqueda(forms.Form):
     tipo=forms.CharField(max_length=30, required=False)   
+    
+    

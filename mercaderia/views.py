@@ -5,7 +5,8 @@ from mercaderia.models import producto
 from mercaderia.forms import FormularioProd, FormularioBusqueda
 from django.views.generic import View
 from django.views.generic import DetailView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import UpdateView
 
 def crear_producto(request):
     
@@ -55,4 +56,8 @@ class ver_prod(DetailView):
     template_name= 'mercaderia/ver_prod.html'
     
     
-    
+class editar_prod(LoginRequiredMixin, UpdateView):
+    model = producto
+    success_url = '/ver_producto/'
+    template_name = 'mercaderia/editar_producto.html'
+    fields = ['tipo', 'modelo', 'descripcion']
