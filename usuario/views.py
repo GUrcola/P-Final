@@ -51,7 +51,7 @@ def editar_perfil(request):
             request.user.first_name=data_nueva['first_name']
             request.user.last_name=data_nueva['last_name']
             request.user.email=data_nueva['email']
-            
+            request.user.pais=data_nueva['pais']
             request.user.save()
             return redirect('perfil')
     else: 

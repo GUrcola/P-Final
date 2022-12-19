@@ -15,3 +15,6 @@ El link de la carpeta con 2 videos es: https://drive.google.com/drive/folders/1n
 -video de inicio del blog
 -video de la composicion del proyecto
  Sobre el video decidi usar el celular (calidad hd) porque no consegui lograr un optimo manejo de aplicaciones para grabar pantalla directamente de la computadora.
+
+
+ Luego de que mandaran la revision despues de lo estipulado (un mes tarde), si bien respeto lo que hayan tenido en su vida privada que causo la tardanza. En este momento me encuntro rindiendo finales en la facultad, cosa que no puedo posponer y que tampoco pense que se me fuera a superponer con el curso. Pido que tengan en consideracion eso y que ademas, hice el trabajo totalmente solo y es mi primer curso en el mundo programacion. 
